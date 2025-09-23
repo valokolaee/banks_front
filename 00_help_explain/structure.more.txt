@@ -1,0 +1,412 @@
+my new project structure:
+---------------------------
+src/
+├── app
+│   ├── store_00.ts
+│   └── store.ts
+├── App.css
+├── App.tsx
+├── assets
+│   └── react.svg
+├── components
+│   ├── LoadingIndicator.tsx
+│   └── ProtectedRoute.tsx
+├── features
+│   ├── api
+│   │   ├── api.ts
+│   │   └── endpoints.ts
+│   ├── auth
+│   │   ├── authSlice.ts
+│   │   └── hooks.ts
+│   ├── ui
+│   │   └── themeSlice.ts
+│   └── user
+│       └── userSlice.ts
+├── hooks.ts
+├── index.css
+├── main.tsx
+├── pages
+│   ├── Account.tsx
+│   ├── Banks.tsx
+│   ├── Home.tsx
+│   ├── Login.tsx
+│   ├── Pools.tsx
+│   ├── Register.tsx
+│   └── Wallet.tsx
+├── store
+│   └── store.ts
+└── vite-env.d.ts
+
+--------------------------------------------
+
+old project structure (developoer is Elahe):
+-----------
+src/
+├── App.tsx
+├── assets
+│   ├── fonts
+│   │   ├── Quicksand-Bold.ttf
+│   │   ├── Quicksand-Light.ttf
+│   │   ├── Quicksand-Medium.ttf
+│   │   ├── Quicksand-Regular.ttf
+│   │   └── Quicksand-SemiBold.ttf
+│   ├── home-content.js
+│   ├── icons
+│   │   └── sidebar
+│   │       ├── alcx_med.svg
+│   │       ├── farm_med.svg
+│   │       ├── swap_med.svg
+│   │       ├── transmuter_med.svg
+│   │       ├── utilities_med.svg
+│   │       └── vaults_med.svg
+│   └── react.svg
+├── components
+│   └── ui
+│       ├── Dropdown.tsx
+│       ├── Input.tsx
+│       ├── NeonCard.tsx
+│       ├── PrimaryButton.tsx
+│       ├── PrimaryLink.tsx
+│       ├── ProfileImage.tsx
+│       ├── Select.jsx
+│       └── Shadow.tsx
+├── config
+│   └── structure.txt
+├── constants
+│   └── constansValues.ts
+├── context
+│   └── AppContext.ts
+├── layouts
+│   ├── footer
+│   │   └── Footer.tsx
+│   ├── header
+│   │   ├── components
+│   │   │   ├── Logo.jsx
+│   │   │   └── UserProfileButton.jsx
+│   │   └── Header.tsx
+│   ├── Layout.tsx
+│   └── sidebar
+│       ├── components
+│       │   └── SidebarItem.tsx
+│       └── Sidebar.tsx
+├── main.tsx
+├── models
+│   └── User.ts
+├── pages
+│   ├── public
+│   │   ├── home
+│   │   │   ├── components
+│   │   │   │   ├── FeatureItem2.tsx
+│   │   │   │   ├── FeatureItem.tsx
+│   │   │   │   ├── Features2.tsx
+│   │   │   │   ├── Features.tsx
+│   │   │   │   └── Hero.tsx
+│   │   │   └── Home.tsx
+│   │   ├── login
+│   │   │   ├── components
+│   │   │   │   └── LoginForm.tsx
+│   │   │   └── Login.tsx
+│   │   ├── monitoring
+│   │   │   ├── components
+│   │   │   │   ├── realTime
+│   │   │   │   │   ├── RealtimeChart.tsx
+│   │   │   │   │   └── RealTimeScript.tsx
+│   │   │   │   ├── strategy
+│   │   │   │   │   ├── StrategyChart.tsx
+│   │   │   │   │   └── StrategyScript.tsx
+│   │   │   │   └── topRates
+│   │   │   │       └── TopRates.tsx
+│   │   │   └── Monitoring.tsx
+│   │   ├── signup
+│   │   │   ├── components
+│   │   │   │   └── SignUpForm.tsx
+│   │   │   └── SignUp.tsx
+│   │   └── wallet
+│   │       └── Wallet.tsx
+│   └── user
+│       ├── account
+│       │   ├── Account.tsx
+│       │   └── components
+│       │       └── ReportInfo.tsx
+│       └── profile
+│           └── Profile.tsx
+├── routes
+│   ├── PublicRoutes.tsx
+│   └── UserRoutes.tsx
+├── service
+│   ├── Api.ts
+│   └── Requests.ts
+├── styles
+│   └── global.css
+└── utils
+    └── toast.ts
+
+------------------------------------------------------------------
+alchmix:
+.
+├── abi
+│   ├── aaveTokenGateway.ts
+│   ├── alchemistErrors.ts
+│   ├── alchemistV2.ts
+│   ├── alToken.ts
+│   ├── curveGauge.ts
+│   ├── curveMetapool.ts
+│   ├── curveRewards.ts
+│   ├── delegateRegistry.ts
+│   ├── gAlcx.ts
+│   ├── lockbox.ts
+│   ├── migrationCalcs.ts
+│   ├── migrator.ts
+│   ├── rewardRouter.ts
+│   ├── stakingPools.ts
+│   ├── staticTokenAdapter.ts
+│   ├── sushiMasterchef.ts
+│   ├── sushiOnsenRewarder.ts
+│   ├── sushiPool.ts
+│   ├── tokenAdapter.ts
+│   ├── transmuterV2.ts
+│   ├── v1Alchemist.ts
+│   ├── v1Migrator.ts
+│   ├── vaultMigrationTool.ts
+│   ├── veloStats.ts
+│   ├── wethGateway.ts
+│   └── wormholeBridgeAdapter.ts
+├── assets
+│   └── logos
+│       ├── discord.svg
+│       ├── snapshot.svg
+│       └── x.svg
+├── components
+│   ├── bridge
+│   │   ├── BridgeQuoter.tsx
+│   │   ├── Bridge.tsx
+│   │   ├── lib
+│   │   │   ├── connext.ts
+│   │   │   ├── constants.ts
+│   │   │   ├── mutations.ts
+│   │   │   ├── queries.ts
+│   │   │   └── wormhole.ts
+│   │   └── StatusBox.tsx
+│   ├── common
+│   │   ├── CtaButton.tsx
+│   │   ├── input
+│   │   │   ├── BorrowInput.tsx
+│   │   │   ├── InputQuickOptions.tsx
+│   │   │   ├── LiquidateInput.tsx
+│   │   │   ├── MigrateTokenInput.tsx
+│   │   │   ├── RepayInput.tsx
+│   │   │   ├── SlippageInput.tsx
+│   │   │   ├── TokenInput.tsx
+│   │   │   ├── TransmuterInput.tsx
+│   │   │   └── VaultWithdrawTokenInput.tsx
+│   │   ├── LoadingBar.tsx
+│   │   ├── Page.tsx
+│   │   └── SmartAccountNotice.tsx
+│   ├── debug
+│   │   ├── DebugTenderly.tsx
+│   │   ├── DebugTokens.tsx
+│   │   └── Debug.tsx
+│   ├── error
+│   │   └── ErrorComponent.tsx
+│   ├── farms
+│   │   ├── Farms.tsx
+│   │   ├── GAlcxWrapper.tsx
+│   │   ├── LiquidityMigration.tsx
+│   │   ├── row
+│   │   │   ├── CurveFarmContent.tsx
+│   │   │   ├── ExitButton.tsx
+│   │   │   ├── FarmContent.tsx
+│   │   │   ├── FarmsAccordionRow.tsx
+│   │   │   ├── InternalFarmContent.tsx
+│   │   │   └── SushiFarmContent.tsx
+│   │   └── StaticExternalFarms.tsx
+│   ├── governance
+│   │   ├── Delegation.tsx
+│   │   ├── Governance.tsx
+│   │   └── row
+│   │       └── ProposalAccordionRow.tsx
+│   ├── landing
+│   │   ├── BlurInText.tsx
+│   │   ├── EcosystemGrid.tsx
+│   │   ├── LandingCtaButton.tsx
+│   │   ├── Landing.tsx
+│   │   ├── RiveSection.tsx
+│   │   ├── SlideBox.tsx
+│   │   ├── Tokens.tsx
+│   │   └── VideoModal.tsx
+│   ├── layout
+│   │   ├── Footer.tsx
+│   │   ├── Header.tsx
+│   │   ├── Layout.tsx
+│   │   ├── LeftBlock.tsx
+│   │   ├── LeftNav.tsx
+│   │   └── MobileNav.tsx
+│   ├── modals
+│   │   ├── ApeModal.tsx
+│   │   └── wormholeWrap
+│   │       ├── BridgeStep.tsx
+│   │       ├── WormholeWrapModal.tsx
+│   │       └── WrapStep.tsx
+│   ├── providers
+│   │   ├── FramerMotionProvider.tsx
+│   │   ├── QueryProvider.tsx
+│   │   ├── SettingsProvider.tsx
+│   │   ├── ThemeProvider.tsx
+│   │   └── Web3Provider.tsx
+│   ├── sentinel
+│   │   └── Sentinel.tsx
+│   ├── transmuters
+│   │   ├── row
+│   │   │   ├── Claim.tsx
+│   │   │   ├── Deposit.tsx
+│   │   │   ├── TransmuterAccordionRow.tsx
+│   │   │   ├── TransmuterApr.tsx
+│   │   │   └── Withdraw.tsx
+│   │   └── Transmuters.tsx
+│   ├── ui
+│   │   ├── accordion.tsx
+│   │   ├── button.tsx
+│   │   ├── dialog.tsx
+│   │   ├── input.tsx
+│   │   ├── popover.tsx
+│   │   ├── progress.tsx
+│   │   ├── scroll-area.tsx
+│   │   ├── select.tsx
+│   │   ├── separator.tsx
+│   │   ├── skeleton.tsx
+│   │   ├── sonner.tsx
+│   │   ├── switch.tsx
+│   │   ├── tabs.tsx
+│   │   └── textarea.tsx
+│   ├── utilities
+│   │   ├── Utilities.tsx
+│   │   └── V1Migration.tsx
+│   └── vaults
+│       ├── common_actions
+│       │   ├── Borrow.tsx
+│       │   ├── DebtSelection.tsx
+│       │   ├── Liquidate.tsx
+│       │   └── Repay.tsx
+│       ├── row
+│       │   ├── Deposit.tsx
+│       │   ├── information
+│       │   │   ├── AprHistoricalChart.tsx
+│       │   │   ├── Earned.tsx
+│       │   │   └── HarvestsAndBonuses.tsx
+│       │   ├── Info.tsx
+│       │   ├── Migrate.tsx
+│       │   ├── motion.tsx
+│       │   ├── VaultAccordionRow.tsx
+│       │   ├── VaultInfo.tsx
+│       │   ├── VaultMessage.tsx
+│       │   └── Withdraw.tsx
+│       ├── VaultsMetrics.tsx
+│       └── Vaults.tsx
+├── hooks
+│   ├── useAllowance.ts
+│   ├── useBreakpoints.ts
+│   ├── useChain.ts
+│   ├── useStaticTokenAdapterWithdraw.ts
+│   ├── useWatchQuery.ts
+│   └── useWriteContractMutationCallback.ts
+├── lib
+│   ├── config
+│   │   ├── addresses.ts
+│   │   ├── alchemists.ts
+│   │   ├── externalLiquidityProviders.ts
+│   │   ├── farms.ts
+│   │   ├── harvests.ts
+│   │   ├── liquidityMigration.ts
+│   │   ├── metadataTypes.ts
+│   │   ├── migrators.ts
+│   │   ├── rewardRouterAddresses.ts
+│   │   ├── synths.ts
+│   │   ├── transmuters.ts
+│   │   ├── v1Migrators.ts
+│   │   └── vaults.ts
+│   ├── constants.ts
+│   ├── dayjs.ts
+│   ├── localStorage.ts
+│   ├── middleware
+│   │   ├── aave.ts
+│   │   ├── bonuses.ts
+│   │   ├── common.ts
+│   │   ├── dinero.ts
+│   │   ├── frax.ts
+│   │   ├── gearbox.ts
+│   │   ├── jones.ts
+│   │   ├── lido.ts
+│   │   ├── rocketPool.ts
+│   │   ├── vesper.ts
+│   │   └── yearn.ts
+│   ├── motion
+│   │   └── motion.ts
+│   ├── mutations
+│   │   ├── useDeposit.ts
+│   │   ├── useMigrate.ts
+│   │   └── useWithdraw.ts
+│   ├── queries
+│   │   ├── farms
+│   │   │   ├── useCurveFarm.ts
+│   │   │   ├── useExternalFarmsAprs.ts
+│   │   │   ├── useInternalFarms.ts
+│   │   │   └── useSushiFarm.ts
+│   │   ├── queriesSchema.ts
+│   │   ├── sentinel
+│   │   │   └── useSentinel.ts
+│   │   ├── transmuters
+│   │   │   ├── useTransmuterApr.ts
+│   │   │   └── useTransmuters.ts
+│   │   ├── useAlchemists.ts
+│   │   ├── useProposals.ts
+│   │   ├── useTokenPrice.ts
+│   │   ├── useTokensQuery.ts
+│   │   └── vaults
+│   │       ├── useHarvests.ts
+│   │       ├── useHistoricApr.ts
+│   │       ├── useVaultEarned.ts
+│   │       ├── useVaultsLiquidateAvailableBalance.ts
+│   │       ├── useVaults.ts
+│   │       └── useVaultsWithdrawAvailableBalance.ts
+│   ├── types.ts
+│   └── wagmi
+│       ├── chains.ts
+│       ├── tenderly.ts
+│       └── wagmiConfig.ts
+├── main.tsx
+├── routes
+│   ├── bridge.lazy.tsx
+│   ├── debug.lazy.tsx
+│   ├── farms.lazy.tsx
+│   ├── governance.lazy.tsx
+│   ├── index.lazy.tsx
+│   ├── __root.tsx
+│   ├── sentinel.lazy.tsx
+│   ├── transmuters.tsx
+│   ├── utilities.lazy.tsx
+│   └── vaults.tsx
+├── routeTree.gen.ts
+├── styles
+│   ├── index.css
+│   ├── Montserrat.css
+│   ├── NeueKabel.css
+│   └── tw-animate.css
+├── utils
+│   ├── cn.ts
+│   ├── getTokenLogoUrl.ts
+│   ├── helpers
+│   │   ├── getToastErrorMessage.ts
+│   │   ├── invalidateWagmiUseQueryPredicate.ts
+│   │   ├── minAmountWithSlippage.ts
+│   │   ├── mutationCallback.test.ts
+│   │   ├── mutationCallback.ts
+│   │   └── vaultHelper.ts
+│   ├── inputNotZero.ts
+│   ├── inputValidation.test.ts
+│   ├── inputValidation.ts
+│   ├── number.test.ts
+│   ├── number.ts
+│   ├── shortenAddress.ts
+│   ├── uuid.ts
+│   └── windowOpen.ts
+└── vite-env.d.ts

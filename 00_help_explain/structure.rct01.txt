@@ -1,0 +1,300 @@
+rct01
+├── 00_help_explain
+│   ├── install 00.txt
+│   ├── install 01.txt
+│   ├── install check.docx
+│   ├── report.docx
+│   ├── structure.more.txt
+│   ├── structure.rct01.txt
+│   ├── table-2cfadddb-7531-4806-913e-6643c8c8f641-9.csv
+│   └── tailwind.docx
+├── dist
+├── eslint.config.js
+├── index.html
+├── package.json
+├── package-lock.json
+├── postcss.config.js
+├── public
+│   ├── assets
+│   │   ├── fonts
+│   │   │   ├── Quicksand-Bold.ttf
+│   │   │   ├── Quicksand-Light.ttf
+│   │   │   ├── Quicksand-Medium.ttf
+│   │   │   ├── Quicksand-Regular.ttf
+│   │   │   └── Quicksand-SemiBold.ttf
+│   │   ├── home-content.js
+│   │   ├── icons
+│   │   │   ├── pools
+│   │   │   │   ├── logo01.png
+│   │   │   │   ├── logo02.png
+│   │   │   │   ├── logo03.png
+│   │   │   │   ├── logo04.png
+│   │   │   │   ├── logo05.png
+│   │   │   │   ├── logo06.png
+│   │   │   │   ├── logo07.png
+│   │   │   │   └── logo08.png
+│   │   │   └── sidebar
+│   │   │       ├── alcx_med.svg
+│   │   │       ├── farm_med.svg
+│   │   │       ├── swap_med.svg
+│   │   │       ├── transmuter_med.svg
+│   │   │       ├── utilities_med.svg
+│   │   │       └── vaults_med.svg
+│   │   └── react.svg
+│   ├── fonts
+│   │   ├── Montserrat
+│   │   │   ├── Montserrat-Italic-VariableFont_wght.ttf
+│   │   │   ├── Montserrat-VariableFont_wght.ttf
+│   │   │   ├── OFL.txt
+│   │   │   ├── README.txt
+│   │   │   └── static
+│   │   │       ├── Montserrat-BlackItalic.ttf
+│   │   │       ├── Montserrat-Black.ttf
+│   │   │       ├── Montserrat-BoldItalic.ttf
+│   │   │       ├── Montserrat-Bold.ttf
+│   │   │       ├── Montserrat-ExtraBoldItalic.ttf
+│   │   │       ├── Montserrat-ExtraBold.ttf
+│   │   │       ├── Montserrat-ExtraLightItalic.ttf
+│   │   │       ├── Montserrat-ExtraLight.ttf
+│   │   │       ├── Montserrat-Italic.ttf
+│   │   │       ├── Montserrat-LightItalic.ttf
+│   │   │       ├── Montserrat-Light.ttf
+│   │   │       ├── Montserrat-MediumItalic.ttf
+│   │   │       ├── Montserrat-Medium.ttf
+│   │   │       ├── Montserrat-Regular.ttf
+│   │   │       ├── Montserrat-SemiBoldItalic.ttf
+│   │   │       ├── Montserrat-SemiBold.ttf
+│   │   │       ├── Montserrat-ThinItalic.ttf
+│   │   │       └── Montserrat-Thin.ttf
+│   │   └── Neue_Kabel
+│   │       └── NeueKabel.otf
+│   ├── images
+│   │   ├── alchemix_intro_logo.png
+│   │   ├── alchemix_logo.png
+│   │   ├── asset-card-icons
+│   │   │   ├── albtc.png
+│   │   │   ├── aleth.png
+│   │   │   └── alusd.png
+│   │   ├── favicons
+│   │   │   ├── android-chrome-192x192.png
+│   │   │   └── safari-pinned-tab.svg
+│   │   ├── icons
+│   │   │   ├── aarbusdcn.svg
+│   │   │   └── yvweth.svg
+│   │   ├── icons_user
+│   │   │   ├── account.svg
+│   │   │   ├── logo16.svg
+│   │   │   ├── pools
+│   │   │   │   ├── 1.svg
+│   │   │   │   ├── 2.svg
+│   │   │   │   ├── 3.svg
+│   │   │   │   ├── 4.svg
+│   │   │   │   ├── 5.svg
+│   │   │   │   ├── 6.svg
+│   │   │   │   ├── 7.svg
+│   │   │   │   ├── 8.svg
+│   │   │   │   └── 9.svg
+│   │   │   ├── pools.svg
+│   │   │   ├── pools_.svg
+│   │   │   └── wallet.svg
+│   └── vite.svg
+├── README.md
+├── src
+│   ├── app
+│   │   └── store.ts
+│   ├── App.css
+│   ├── App.tsx
+│   ├── assets
+│   │   ├── fonts
+│   │   │   ├── Quicksand-Bold.ttf
+│   │   │   ├── Quicksand-Light.ttf
+│   │   │   ├── Quicksand-Medium.ttf
+│   │   │   ├── Quicksand-Regular.ttf
+│   │   │   └── Quicksand-SemiBold.ttf
+│   │   ├── icons
+│   │   │   └── sidebar
+│   │   │       ├── alcx_med.svg
+│   │   │       ├── farm_med.svg
+│   │   │       ├── swap_med.svg
+│   │   │       ├── transmuter_med.svg
+│   │   │       ├── utilities_med.svg
+│   │   │       └── vaults_med.svg
+│   │   └── react.svg
+│   ├── components
+│   │   ├── layout
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Header.tsx
+│   │   │   ├── Layout.tsx
+│   │   │   ├── MobileNav.tsx
+│   │   │   └── sidebar.tsx
+│   │   ├── LoadingIndicator.tsx
+│   │   ├── ProtectedRoute.tsx
+│   │   └── ui
+│   │       ├── Background.tsx
+│   │       ├── Dropdown.tsx
+│   │       ├── FeatureItem.tsx
+│   │       ├── Features.tsx
+│   │       ├── Hero.tsx
+│   │       ├── index.html
+│   │       ├── PrimaryButton.tsx
+│   │       ├── Shadow.tsx
+│   │       ├── SimpleBackground.tsx
+│   │       ├── SimpleHero.tsx
+│   │       └── StarsSimulation.tsx
+│   ├── features
+│   │   ├── api
+│   │   │   ├── api.ts
+│   │   │   ├── endpoint.10.worked.ts
+│   │   │   └── endpoint.ts
+│   │   ├── auth
+│   │   │   ├── authSlice.ts
+│   │   │   └── hooks.ts
+│   │   ├── ui
+│   │   │   └── themeSlice.ts
+│   │   └── user
+│   │       └── userSlice.ts
+│   ├── hooks.ts
+│   ├── images
+│   │   ├── alchemix_intro_logo.png
+│   │   ├── alchemix_logo.png
+│   │   ├── asset-card-icons
+│   │   │   ├── albtc.png
+│   │   │   ├── aleth.png
+│   │   │   └── alusd.png
+│   │   ├── favicons
+│   │   │   ├── android-chrome-192x192.png
+│   │   │   ├── android-chrome-512x512.png
+│   │   │   ├── android-icon-144x144.png
+│   │   │   └── safari-pinned-tab.svg
+│   │   ├── icons
+│   │   │   ├── aarbusdcn.svg
+│   │   │   └── yvweth.svg
+│   │   ├── icons_user
+│   │   │   ├── 7.svg
+│   │   │   └── Rose.svg
+│   │   ├── integrations
+│   │   │   ├── built-on-ethereum.png
+│   │   │   ├── coingecko.svg
+│   │   │   ├── defillama.svg
+│   │   │   ├── klima.svg
+│   │   │   ├── lifi.svg
+│   │   │   ├── snapshot.png
+│   │   │   ├── snapshot.svg
+│   │   │   ├── zapper_black.svg
+│   │   │   └── zapper.png
+│   │   ├── landing-page
+│   │   │   ├── apxeth.png
+│   │   │   ├── dai.png
+│   │   │   ├── eth.png
+│   │   │   ├── flexible.png
+│   │   │   ├── frax.png
+│   │   │   ├── frxeth.png
+│   │   │   ├── no_liquidations.png
+│   │   │   ├── reth.png
+│   │   │   ├── security.png
+│   │   │   ├── stars.svg
+│   │   │   ├── usdc.png
+│   │   │   ├── usdt.png
+│   │   │   └── wsteth.png
+│   │   ├── screenshots
+│   │   │   ├── alchemix_stats.png
+│   │   │   ├── alchemix_tidbits.jpeg
+│   │   │   ├── alea_deep_dive.png
+│   │   │   ├── amo_harvester.png
+│   │   │   ├── contract_params_dashboard.png
+│   │   │   ├── srens.png
+│   │   │   └── status.png
+│   │   ├── token-icons
+│   │   │   ├── aArbUSDCn.svg
+│   │   │   ├── aDAI.svg
+│   │   │   ├── aFRAX.svg
+│   │   │   ├── ALCX.png
+│   │   │   ├── ALCX.svg
+│   │   │   ├── alETH.png
+│   │   │   ├── alETH.svg
+│   │   │   ├── alUSD.png
+│   │   │   ├── alUSD.svg
+│   │   │   ├── aOptDAI.svg
+│   │   │   ├── aOptUSDC.svg
+│   │   │   ├── aOptUSDT.svg
+│   │   │   ├── aOptWETH.svg
+│   │   │   ├── apxETH.png
+│   │   │   ├── AURA.svg
+│   │   │   ├── aUSDC.svg
+│   │   │   ├── aUSDT.svg
+│   │   │   ├── aWETH.svg
+│   │   │   ├── crv.png
+│   │   │   ├── crv.svg
+│   │   │   ├── DAI.png
+│   │   │   ├── DAI.svg
+│   │   │   ├── ETH.png
+│   │   │   ├── ETH.svg
+│   │   │   ├── FRAX.svg
+│   │   │   ├── FTM.svg
+│   │   │   ├── gALCX.svg
+│   │   │   ├── gALCX_.svg
+│   │   │   ├── jUSDC.webp
+│   │   │   ├── OP.svg
+│   │   │   ├── rETH.svg
+│   │   │   ├── saddlealETH.png
+│   │   │   ├── saddlealETH.svg
+│   │   │   ├── sfrxETH.svg
+│   │   │   ├── Shares.svg
+│   │   │   ├── SLP.svg
+│   │   │   ├── SUSHI.png
+│   │   │   ├── SUSHI.svg
+│   │   │   ├── tALCX.png
+│   │   │   ├── tALCX.svg
+│   │   │   ├── unknown.svg
+│   │   │   ├── USDC.e.svg
+│   │   │   ├── USDC.png
+│   │   │   ├── USDC.svg
+│   │   │   ├── USDT.png
+│   │   │   ├── USDT.svg
+│   │   │   ├── vaDAI.svg
+│   │   │   ├── vaETH.svg
+│   │   │   ├── vaFRAX.svg
+│   │   │   ├── vaUSDC.svg
+│   │   │   ├── WETH.svg
+│   │   │   ├── wstETH.svg
+│   │   │   ├── xalETH.svg
+│   │   │   ├── xalUSD.svg
+│   │   │   ├── yvDAI.svg
+│   │   │   ├── yvUSDC.e.svg
+│   │   │   ├── yvUSDC.svg
+│   │   │   ├── yvUSDT.svg
+│   │   │   └── yvWETH.svg
+│   │   ├── token-svgs
+│   │   │   ├── curve.svg
+│   │   │   ├── sushi.svg
+│   │   │   └── yearn.svg
+│   │   ├── tooltipIcon.png
+│   │   └── user-profile.jpg
+│   ├── index.css
+│   ├── main.tsx
+│   ├── pages
+│   │   ├── Account.tsx
+│   │   ├── Banks.tsx
+│   │   ├── ExperimentalPage.tsx
+│   │   ├── Home.tsx
+│   │   ├── Login.tsx
+│   │   ├── Pools.10.worked.tsx
+│   │   ├── Pools.tsx
+│   │   ├── Register.tsx
+│   │   └── Wallet.tsx
+│   ├── styles
+│   │   ├── Montserrat.css
+│   │   ├── NeueKabel.css
+│   │   ├── responsive.css
+│   │   └── tw-animate.css
+│   ├── types.ts
+│   ├── utils
+│   │   └── debugLogger.ts
+│   └── vite-env.d.ts
+├── tailwind.config.19.js
+├── tailwind.config.js
+├── tsconfig.app.json
+├── tsconfig.json
+├── tsconfig.node.json
+└── vite.config.ts
+

@@ -1,0 +1,23 @@
+created at 20250810
+
+npm create vite@latest . -- --template react-ts
+
+npm install -D @vitejs/plugin-react
+
+npm install @reduxjs/toolkit react-redux
+npm install axios
+
+npm install aos
+npm install --save-dev @types/aos
+
+npm install -D @tailwindcss/postcss7-compat
+
+npm install
+
+
+npm run dev
+
+npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+
+
+npm install -D @vitejs/plugin-basic-ssl

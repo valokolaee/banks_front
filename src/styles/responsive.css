@@ -1,0 +1,6 @@
+/* src/styles/responsive.css */
+@media (min-width: 768px) {
+  .sidebar-desktop { display: block !important; }
+  .mobile-nav-hidden { display: none !important; }
+  .main-with-sidebar { margin-left: 240px; }
+}
