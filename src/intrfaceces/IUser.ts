@@ -2,6 +2,7 @@
 export default interface IUser {
     id?: number;
     username?: string;
+    pass?: string;
     email?: string;
     passwordHash?: string;
     roleId?: number;
@@ -13,7 +14,7 @@ export default interface IUser {
     profileImage?: string | null;
     csvUrl?: string | null;
     createdAt?: Date;
-token?:string
+    token?: string;
 }
 
 // {

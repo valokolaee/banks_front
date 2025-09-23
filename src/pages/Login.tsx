@@ -22,6 +22,7 @@ const Login = () => {
   const refWebService = useRef<IWebServiceFuncs>()
 
   const navigate = useNavigate();
+  const _savedUser = useAppSelector((s) => s.userSlice)
 
   interface FieldType extends ILoginReq {
     remember?: boolean;
@@ -29,12 +30,20 @@ const Login = () => {
   };
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
-    values={...values,remember:undefined}
-    const x = await refWebService?.current?.callApi<ILoginRes>(apis.auth.login(values))
-    console.log('xxx', x);
+    const v = { ...values, remember: undefined }
+    const x = await refWebService?.current?.callApi<ILoginRes>(apis.auth.login(v))
 
     if (x?.success) {
-      setUser( x.data as IUser)
+      var u: IUser = x.data as IUser;
+
+      if (values.remember) {
+        u.pass = values.password
+      }
+      console.log('xxx', u);
+      console.log('user', _savedUser);
+
+
+      setUser(u)
       navigate('/account')
     }
   };
@@ -43,7 +52,6 @@ const Login = () => {
     console.log('Failed:', errorInfo);
   };
 
-// git@github.com:valokolaee/banks_front.git
 
   return (
 
@@ -60,8 +68,12 @@ const Login = () => {
         wrapperCol={{ span: '30%' }}
         layout="horizontal"
         style={{ maxWidth: '80%' }}
-        // autoComplete=""
-        initialValues={{ remember: true }}
+        autoComplete="yes"
+        initialValues={{
+          remember: true,
+          email: _savedUser?.email,
+          password: _savedUser?.pass,
+        }}
 
       >
         <Form.Item<FieldType>
@@ -83,7 +95,7 @@ const Login = () => {
         <Form.Item<FieldType> name="remember" valuePropName="checked"
           label={<label style={{ color: "white" }}>Remember me</label>}
         >
-          <Checkbox/>
+          <Checkbox />
         </Form.Item>
         <Form.Item label={null}>
           <CButton title='Submit' />

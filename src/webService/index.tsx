@@ -91,18 +91,7 @@ export interface IWebService {
 }
 
 
-const className = 'absolute ce'
-
+ 
 
 type TPosition = "center" | "pageFlew"
-function positioner(params: TPosition) {
-  switch (params) {
-    case 'center':
-
-      break;
-
-    case 'pageFlew':
-    default:
-
-  }
-}
+ 

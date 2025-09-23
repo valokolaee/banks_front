@@ -25,27 +25,27 @@ const Banks: React.FC = () => {
   useEffect(() => {
     _loadPools()
   }, [])
-  useEffect(() => {
-    _loadServices()
-  }, [expandedBankId])
+  // useEffect(() => {
+  //   _loadServices()
+  // }, [expandedBankId])
 
 
 
   const _loadPools = async () => {
 
-    const x2 = await refWebService.current?.callApi<IResponse<IBank[]>>(apis.banks.getAll())
+    const x2 = await refWebService.current?.callApi<IResponse<IBank[]>>(apis.pools.getAll())
     if (x2?.success) {
       set_banks(x2.data!)
     }
 
   }
 
-  const _loadServices = async () => {
-    const x1 = await refWebService.current?.callApi<IResponse<IService[]>>(apis.pools.services(expandedBankId!))
-    if (x1?.success) {
-      set_services(x1.data!)
-    }
-  }
+  // const _loadServices = async () => {
+  //   const x1 = await refWebService.current?.callApi<IResponse<IService[]>>(apis.pools.services(expandedBankId!))
+  //   if (x1?.success) {
+  //     set_services(x1.data!)
+  //   }
+  // }
 
 
   // const { data: banks, isLoading, error } = useGetBanksQuery();

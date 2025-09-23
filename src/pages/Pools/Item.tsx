@@ -1,78 +1,29 @@
 // src/pages/Pools.tsx
-import React, { useState, useCallback, useEffect, useRef } from "react";
-import { useGetPoolsQuery, useGetPoolServicesQuery } from "../../features/api/poolsEndpoint";
+import React, { useEffect, useRef, useState } from "react";
 import SmartImage from "../../components/ui/SmartImage";
+import { IPool, IService } from "../../intrfaceces/types";
 import "../../styles/pools.css";
 import WebService, { IWebServiceFuncs } from "../../webService";
 import apis from "../../webService/ApiUrls/apis";
-import { useAppSelector } from "../../redux/hooks";
-import { IKeyValue } from "mrv-utils";
 import IResponse from "../../webService/ApiUrls/apis/IResponse";
-import { IPool, IService } from "../../intrfaceces/types";
 
-/**
- * Pools page with optimized expand/collapse behavior and smooth animations
- * Features single-expand functionality and proper service isolation
- */
 
-const PoolsItem: React.FC<{ pool: IPool; index: number; expandedPoolId: number; setExpandedPoolId: (id?: number | null) => void }> = ({ pool, index, }) => {
+const PoolsItem: React.FC<{ pool: IPool; index: number; expandedPoolId: number; setExpandedPoolId: (id: number) => void }> = ({ pool, index, expandedPoolId, setExpandedPoolId }) => {
   const refWebService = useRef<IWebServiceFuncs>()
-  // const { data: pools, isLoading, error } = useGetPoolsQuery();
-  const [expandedPoolId, setExpandedPoolId] = useState<number | null>(null);
+
   const [_services, set_services] = useState<IService[]>([])
   const [_pools, set_pools] = useState<IPool[]>([])
 
-  // const { data: services } = useGetPoolServicesQuery(expandedPoolId!, { skip: !expandedPoolId, });
-  const _userID = useAppSelector((s) => s.userSlice.id)
 
-  // Fetch services only for the currently expanded pool
-
-  const clickTimeoutRef = useRef<number | null>(null);
-  const lastClickedRef = useRef<number>(0);
-
-  /**
-   * Toggle pool expansion with debouncing and single-expand behavior
-   * Only one pool can be expanded at a time with smooth animations
-   */
-  const togglePoolServices = useCallback((poolId: number) => {
-    const now = Date.now();
-    const timeSinceLastClick = now - lastClickedRef.current;
-
-    // Prevent rapid consecutive clicks (300ms protection)
-    if (timeSinceLastClick < 300) return;
-
-    lastClickedRef.current = now;
-
-    // Clear any existing timeout
-    if (clickTimeoutRef.current !== null) {
-      clearTimeout(clickTimeoutRef.current);
-      clickTimeoutRef.current = null;
+  useEffect(() => {
+    if (expandedPoolId === pool.id) {
+      _load()
     }
-
-    // Set timeout for smooth animation handling
-    clickTimeoutRef.current = window.setTimeout(() => {
-      setExpandedPoolId(prev => prev === poolId ? null : poolId);
-    }, 30);
-  }, []);
-
-
-
-  // Cleanup timeouts on component unmount
-  useEffect(() => {
-    return () => {
-      if (clickTimeoutRef.current !== null) {
-        clearTimeout(clickTimeoutRef.current);
-      }
-    };
-  }, []);
-
-
-
-  useEffect(() => {
-    _load()
   }, [expandedPoolId])
 
-
+  const _act = () => {
+    setExpandedPoolId(pool.id)
+  }
 
   const _load = async () => {
 
@@ -82,45 +33,12 @@ const PoolsItem: React.FC<{ pool: IPool; index: number; expandedPoolId: number; 
     }
     console.log(x2);
 
-    const x1 = await refWebService.current?.callApi<IResponse<IService[]>>(apis.pools.services(expandedPoolId!))
-    if (x1?.success) {
-      set_services(x1.data!)
-    }
   }
-
-
-
-
-  // return <>
-  //     <WebService ref={refWebService} />
-  // </>
-
-  // Loading state
-  // if (isLoading)
-  // return (
-  //   <div className="relative min-h-screen">
-  //     <div className="relative z-10 text-center py-20 text-white text-xl">
-  //       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-  //       Loading investment pools...
-  //     </div>
-
-  //     <WebService ref={refWebService} />
-  //   </div>
-  // );
-
-  // Error state
-  // if (error) return (
-  //   <div className="relative min-h-screen">
-  //     <div className="relative z-10 text-center py-20 text-red-400 text-lg">
-  //       <div className="text-4xl mb-4">⚠️</div>
-  //       Failed to load pools data. Please try again later.
-  //     </div>
-  //   </div>
-  // );
 
   return (
     <div
       key={pool.id}
+      onClick={_act}
       data-aos="fade-up"
       data-aos-delay={index * 100}
       className={`pool-card level-${pool.level} group transition-all duration-300 ${expandedPoolId === pool.id ? '!border-primary !scale-105 expanded' : ''
@@ -129,12 +47,7 @@ const PoolsItem: React.FC<{ pool: IPool; index: number; expandedPoolId: number; 
       {/* Compact Card View */}
       <div
         className="pool-compact group-hover:bg-dark-gray/50 transition-colors duration-200 cursor-pointer"
-        onClick={() => togglePoolServices(pool.id)}
-        onKeyPress={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            togglePoolServices(pool.id);
-          }
-        }}
+
         tabIndex={0}
         role="button"
         aria-label={`Toggle ${pool.name} details`}
@@ -229,7 +142,9 @@ const PoolsItem: React.FC<{ pool: IPool; index: number; expandedPoolId: number; 
               className="btn btn-small hover:bg-red-500 transition-all duration-200"
               onClick={(e) => {
                 e.stopPropagation();
-                togglePoolServices(pool.id);
+                setExpandedPoolId(-1)
+                // _act()
+                // togglePoolServices(-1);
               }}
             >
               Close

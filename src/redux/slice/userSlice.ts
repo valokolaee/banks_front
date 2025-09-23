@@ -28,15 +28,7 @@ const userSlice = createSlice({
       state.id = action.payload.id;
       state.logoUrl = action.payload.logoUrl;
       state.profileImage = action.payload.profileImage;
- 
-
-
-
-
-
-
-
-
+      state.pass = action.payload.pass;
     },
   },
 });
