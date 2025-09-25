@@ -26,6 +26,10 @@ import { csvUrler } from "../webService/ApiUrls/apiUrlService/baseUrl";
 import csvOperations from "../utils/csvOperations";
 import IUser from "../intrfaceces/IUser";
 import IResponse from "../webService/ApiUrls/apis/IResponse";
+import ImageUploader from "../components/ui/ImageUploader";
+import { v4 as uuidv4 } from 'uuid';
+import { Image } from 'antd';
+import { setUser } from "../redux/actions";
 
 /**
  * Comprehensive account dashboard with user profile, stats, and financial data
@@ -36,7 +40,7 @@ const Account: React.FC = () => {
 
 
   const [profit, set_profit] = useState<IProfits>({});
-  const [user, set_user] = useState<IUser>({});
+  // const [user, set_user] = useState<IUser>({});
   const [stats, set_stats] = useState<IUserStats>();
   const [investments, set_investments] = useState<IInvestment[]>([]);
   const [bankAffiliations, set_bankAffiliations] = useState<IBankAffiliation[]>([]);
@@ -78,25 +82,27 @@ const Account: React.FC = () => {
       active_referrals: csvSampleData[0].profit4,
     })
     const getMe = await refWebService?.current?.callApi<IResponse<IUser>>(apis.auth.getMe)
-    set_user(getMe?.data!)
+
+    if (getMe?.success) {
+      setUser({ ..._user, ...getMe?.data! })
+    }
+
     console.log('getMe', getMe);
-
-
 
     const investments = await refWebService?.current?.callApi<IInvestment[]>(apis.users.investments)
     // set_investments(investments!)
-    console.log('investments', investments);
+    // console.log('investments', investments);
 
     const bankAffiliations = await refWebService?.current?.callApi<IBankAffiliation[]>(apis.users.bank_affiliations)
     // set_bankAffiliations(bankAffiliations!)
-    console.log('bankAffiliations', bankAffiliations);
+    // console.log('bankAffiliations', bankAffiliations);
 
     const referrals = await refWebService?.current?.callApi<IReferral[]>(apis.users.referrals)
     // set_referrals(referrals!)
-    console.log('referrals', referrals);
+    // console.log('referrals', referrals);
 
     const loans = await refWebService?.current?.callApi<ILoan>(apis.users.loans)
-    console.log('loans', loans);
+    // console.log('loans', loans);
 
 
   }
@@ -123,22 +129,32 @@ const Account: React.FC = () => {
           {/* Profile Card */}
           <div className="account-card lg:col-span-1">
             <div className="profile-header">
-              <SmartImage
-                src={user?.profileImage || user?.logoUrl || ''}
-                alt="Profile"
-                fallbackSrc="/images/default-avatar.png"
-                className="w-20 h-20 rounded-full border-4 border-gold/30 mx-auto mb-4"
-              />
-              <h2 className="text-xl font-bold text-gold text-center">Welcome Back, {user?.username}</h2>
-              <p className="text-gray-400 text-center">{user?.email}</p>
+              <div className="relative ">
+
+                <Image
+                  src={_user?.profileImage! + '&a=' + uuidv4()}
+                  style={{ borderRadius: '10px' }}
+                />
+                <div
+                  className='absolute bottom-3 right-3 opacity-25 hover:opacity-75'
+                >
+
+                  <ImageUploader numberOfItems={1} />
+                </div>
+
+              </div>
+
+
+              <h2 className="text-xl font-bold text-gold text-center">Welcome Back, {_user?.username}</h2>
+              <p className="text-gray-400 text-center">{_user?.email}</p>
               <p className="text-bronze text-sm text-center capitalize mt-2">
-                {user?.clientType?.replace('_', ' ') || 'Individual Member'}
+                {_user?.clientType?.replace('_', ' ') || 'Individual Member'}
               </p>
             </div>
 
             <div className="profile-meta mt-4">
               <p className="text-sm text-gray-400">
-                <strong>Member Since:</strong> {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}
+                <strong>Member Since:</strong> {_user?.createdAt ? new Date(_user.createdAt).toLocaleDateString() : 'N/A'}
               </p>
               <p className="text-sm text-gray-400">
                 <strong>Last Login:</strong> {new Date().toLocaleDateString()}

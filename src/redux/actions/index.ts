@@ -1,12 +1,16 @@
   
 import IUser from '../../intrfaceces/IUser';
-import { SET_USER } from '../slice/userSlice';
+import { SET_USER, SET_USER_AVATAR } from '../slice/userSlice';
 import { appDispatch } from '../store';
 
 
 
 export const setUser = (data: IUser|undefined) => {
     appDispatch(SET_USER(data!));
+};
+
+export const setUserAvatar = (data: string) => {
+    appDispatch(SET_USER_AVATAR(data ));
 };
 
 // export const setLanguage = (data: ILang | undefined) => { appDispatch(SET_LANGUAGE(data!)); };

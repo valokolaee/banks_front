@@ -11,6 +11,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@types/react-router-dom": "^5.3.3",
     "antd": "^5.27.3",
+    "antd-img-crop": "^4.25.0",
     "aos": "^2.3.4",
     "axios": "^1.11.0",
     "csvtojson": "^2.0.10",
@@ -22,7 +23,8 @@
     "react-router-dom": "^7.8.0",
     "redux-persist": "^6.0.0",
     "request": "^2.88.2",
-    "requests": "^0.3.0"
+    "requests": "^0.3.0",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss7-compat": "^2.2.17",

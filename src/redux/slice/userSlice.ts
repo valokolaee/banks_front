@@ -27,12 +27,16 @@ const userSlice = createSlice({
       state.clientType = action.payload.clientType;
       state.id = action.payload.id;
       state.logoUrl = action.payload.logoUrl;
-      state.profileImage = action.payload.profileImage;
+      // state.profileImage = action.payload.profileImage;
       state.pass = action.payload.pass;
+    },
+    SET_USER_AVATAR: (state, action: PayloadAction<string>) => {
+      
+      state.profileImage = action.payload;
     },
   },
 });
 
-export const { SET_USER } = userSlice.actions;
+export const { SET_USER ,SET_USER_AVATAR} = userSlice.actions;
 const userReducer = userSlice.reducer;
 export default userReducer;
