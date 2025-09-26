@@ -14,6 +14,15 @@ import apis from '../webService/ApiUrls/apis';
 import CButton from '../components/ui/CButton';
 import { setUser } from '../redux/actions';
 import IUser from '../intrfaceces/IUser';
+import { NotificationPlacement } from 'antd/es/notification/interface';
+import {
+  RadiusBottomleftOutlined,
+  RadiusBottomrightOutlined,
+  RadiusUpleftOutlined,
+  RadiusUprightOutlined,
+} from '@ant-design/icons';
+import { Button, Divider, notification, Space } from 'antd';
+import type { NotificationArgsProps } from 'antd';
 
 
 const FormDisabledDemo: React.FC = () => {
@@ -38,7 +47,8 @@ const FormDisabledDemo: React.FC = () => {
     if (x?.success) {
       setUser(x.data as IUser)
       navigate('/account')
-    }
+    } else {
+      openNotification(x?.message || 'Registration failed') }
 
 
   };
@@ -48,11 +58,24 @@ const FormDisabledDemo: React.FC = () => {
   };
 
 
+   const [api, contextHolder] = notification.useNotification();
 
+  const openNotification = (message:string) => {
+     
+    api.info({
+      message,
+      // description:`yesterday you said tomorrow, so just do it!`,
+      placement:'topRight',
+      showProgress: true,
+      pauseOnHover: true,
+    });
+  };
 
   return (
     <div>
-      <h2>Register</h2>
+      {contextHolder}
+
+      <h2 >Register</h2>
 
       <Form
         name="Register"
@@ -181,6 +204,7 @@ const FormDisabledDemo: React.FC = () => {
 
 
       </Form>
+      
     </div>
   );
 };
