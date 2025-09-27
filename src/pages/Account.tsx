@@ -61,12 +61,15 @@ const Account: React.FC = () => {
   const _loadProf = async () => {
 
     const csvFilePath = 'https://w.bankon.click/asset/data/reportu/royal_kmn.csv'
+    const csvFilePath2 = 'https://w.bankon.click/asset/data/report/data_info.csv'
     const stats = await refWebService?.current?.callApi<IUserStats>(apis.users.stats)
     // set_stats(stats)
     console.log('stats', stats);
 
-    const x: IProfits[] = await csvOperations(csvUrler(_user?.username!))
-    console.log('x', x,);
+
+    const x2: IProfits[] = await csvOperations(csvFilePath2)
+    const x: IProfits[] = await csvOperations(csvUrler('royal_kmn'))
+    console.log('x', x2,);
     if (x.length > 0) {
       set_stats({
         total_assets: x[0].profit1,

@@ -1,7 +1,9 @@
 export default async (p: string) => await parseCSV(p)
 
 
-const  parseCSV =async(p: string)=> {
+const parseCSV = async (p: string) => {
+  console.log(p);
+  
   const content: any =await readCSVAsync(p)
   const rows = content.trim().split('\n');
   const header = rows[0].split(',');

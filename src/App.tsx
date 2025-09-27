@@ -12,12 +12,15 @@ import Account from "./pages/Account";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { setUser } from "./redux/actions";
+import RealtimeChart from "./pages/monitoring/components/realTime/RealtimeChart";
+import Monitoring from "./pages/monitoring/Monitoring";
+import Router from "./Router/Router";
 
 function App() {
   return (
     <Layout >
-
-      <Routes>
+      <Router />
+      {/* <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/pools" element={<Pools />} />
         <Route path="/banks" element={<Banks />} />
@@ -25,7 +28,8 @@ function App() {
         <Route path="/account" element={<Account />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
-      </Routes>
+        <Route path="/chart" element={<Monitoring />} />
+      </Routes> */}
     </Layout>
   );
 }
