@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Upload, Button, message } from 'antd';
-import { CameraFilled, EditFilled, EditOutlined, FileImageFilled, FileImageOutlined, FileImageTwoTone, UploadOutlined } from '@ant-design/icons';
+import { FileImageTwoTone } from '@ant-design/icons';
+import { Button, message, Upload } from 'antd';
+import React, { useState } from 'react';
 import { localhost } from '../../webService/ApiUrls/apiUrlService/baseUrl';
 
  import { v4 as uuidv4 } from 'uuid';
  
 import type { GetProp, UploadFile, UploadProps } from 'antd';
 import ImgCrop from 'antd-img-crop';
-import { config } from '../../webService';
+import { setUserAvatar } from '../../redux/actions';
 import { useAppSelector } from '../../redux/hooks';
-import { setUser, setUserAvatar } from '../../redux/actions';
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
 const FileUpload: React.FC<{ numberOfItems: number; img?: UploadFile }> = ({ numberOfItems, img }) => {
@@ -64,7 +63,7 @@ const FileUpload: React.FC<{ numberOfItems: number; img?: UploadFile }> = ({ num
                 onSuccess(result, file);
                 console.log(result);
                 
-                setUserAvatar(result.data.url + '?a=' + uuidv4())
+                setUserAvatar(result.data.url + '?a=' + new Date())
                 message.success('File uploaded successfully');
             } else {
                 onError(new Error(result.error));
@@ -88,8 +87,8 @@ const FileUpload: React.FC<{ numberOfItems: number; img?: UploadFile }> = ({ num
                     //      onChange({fileList:file.})
                     //     }
                     // }}
-                onChange={onChange}
-                        listType="text"
+                // onChange={onChange}
+                        // listType="text"
                         fileList={fileList}
                          onPreview={onPreview}
                     >

@@ -11,6 +11,7 @@ import Pools from "../pages/Pools/Pools";
 import Register from "../pages/Register";
 import Wallet from "../pages/Wallet";
 import Monitoring from "../pages/monitoring/Monitoring";
+import Profile from "../pages/Profile";
 
 
 export default () =>
@@ -23,7 +24,8 @@ export default () =>
     <Route path="/account" element={<Account />} />
     <Route path="/login" element={<Login />} />
     <Route path="/register" element={<Register />} />
-    <Route path="/chart" element={<Monitoring />} />
+    <Route path="/profile" element={<Profile />} />
+    <Route path="/monitoring" element={<Monitoring />} />
   </Routes>
 
 

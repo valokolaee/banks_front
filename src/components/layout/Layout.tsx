@@ -3,7 +3,7 @@ import React from "react";
 import Header from "./Header";
 import Sidebar from "./sidebar";
 import MobileNav from "./MobileNav";
- import StarsSimulation from "../ui/StarsSimulation";
+import StarsSimulation from "../ui/StarsSimulation";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (

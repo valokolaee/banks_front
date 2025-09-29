@@ -1,35 +1,24 @@
 // src/pages/Account.tsx
 import React, { useEffect, useRef, useState } from "react";
+import CAvatar from "../components/ui/CAvatar";
+import ImageUploader from "../components/ui/ImageUploader";
 import {
-  useGetCurrentUserQuery,
-  useGetUserStatsQuery,
-  useGetUserInvestmentsQuery,
-  useGetUserBankAffiliationsQuery,
-  useGetUserReferralsQuery,
-  useGetUserLoansQuery,
-  useUpdateUserProfileMutation,
-  IUserStats,
-  IInvestment,
   IBankAffiliation,
-  IReferral,
+  IInvestment,
   ILoan,
-  IProfits
+  IProfits,
+  IReferral,
+  IUserStats
 } from "../features/api/userEndpoint";
-import SmartImage from "../components/ui/SmartImage";
+import IUser from "../intrfaceces/IUser";
+import { useAppSelector } from "../redux/hooks";
 import "../styles/account.css";
-import { ILoginRes } from "../webService/ApiUrls/apis/ILogin";
+import csvOperations from "../utils/csvOperations";
 import WebService, { IWebServiceFuncs } from "../webService";
 import apis from "../webService/ApiUrls/apis";
-import { useAppSelector } from "../redux/hooks";
-import csv from 'csvtojson'
-import { csvUrler } from "../webService/ApiUrls/apiUrlService/baseUrl";
-import csvOperations from "../utils/csvOperations";
-import IUser from "../intrfaceces/IUser";
 import IResponse from "../webService/ApiUrls/apis/IResponse";
-import ImageUploader from "../components/ui/ImageUploader";
-import { v4 as uuidv4 } from 'uuid';
-import { Image } from 'antd';
-import { setUser } from "../redux/actions";
+import { csvUrler } from "../webService/ApiUrls/apiUrlService/baseUrl";
+import { Image } from "antd";
 
 /**
  * Comprehensive account dashboard with user profile, stats, and financial data
@@ -61,7 +50,7 @@ const Account: React.FC = () => {
   const _loadProf = async () => {
 
     const csvFilePath = 'https://w.bankon.click/asset/data/reportu/royal_kmn.csv'
-    const csvFilePath2 = 'https://w.bankon.click/asset/data/report/data_info.csv'
+    const csvFilePath2 = 'https://w.bankon.click/asset/data/report/data_info.csc'
     const stats = await refWebService?.current?.callApi<IUserStats>(apis.users.stats)
     // set_stats(stats)
     console.log('stats', stats);
@@ -86,9 +75,9 @@ const Account: React.FC = () => {
     })
     const getMe = await refWebService?.current?.callApi<IResponse<IUser>>(apis.auth.getMe)
 
-    if (getMe?.success) {
-      setUser({ ..._user, ...getMe?.data! })
-    }
+    // if (getMe?.success) {
+    //   setUser( getMe?.data! )
+    // }
 
     console.log('getMe', getMe);
 
@@ -133,11 +122,19 @@ const Account: React.FC = () => {
           <div className="account-card lg:col-span-1">
             <div className="profile-header">
               <div className="relative ">
+                <div className="relative w-1/2 h-1/2 ">
 
-                <Image
-                  src={_user?.profileImage! + '&a=' + uuidv4()}
+                  <CAvatar
+                    size={150}
+                    shape="square"
+                    url={_user?.profileImage! + '&a=' + new Date()}
+                  />
+                </div>
+                {/* <Image
+                  src={_user?.profileImage! + '&a=' + new Date()}
                   style={{ borderRadius: '10px' }}
                 />
+                */}
                 <div
                   className='absolute bottom-3 right-3 opacity-25 hover:opacity-75'
                 >

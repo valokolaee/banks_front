@@ -7,6 +7,9 @@ import { appDispatch } from '../store';
 
 export const setUser = (data: IUser|undefined) => {
     appDispatch(SET_USER(data!));
+    if (data?.profileImage) {
+        setUserAvatar(data.profileImage)
+    }
 };
 
 export const setUserAvatar = (data: string) => {

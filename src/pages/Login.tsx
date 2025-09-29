@@ -15,7 +15,7 @@ import ILoginReq, { ILoginRes } from "../webService/ApiUrls/apis/ILogin";
 import { useAppSelector } from "../redux/hooks";
 import { useAppDispatch } from "../hooks";
 import IUser from "../intrfaceces/IUser";
-import { setUser } from "../redux/actions";
+import { setUser, setUserAvatar } from "../redux/actions";
 // import Background from "../components/ui/Background";
 
 const Login = () => {
@@ -28,6 +28,7 @@ const Login = () => {
     remember?: boolean;
 
   };
+  console.log('user', _savedUser);
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
     const v = { ...values, remember: undefined }
@@ -40,10 +41,10 @@ const Login = () => {
         u.pass = values.password
       }
       console.log('xxx', u);
-      console.log('user', _savedUser);
 
 
       setUser(u)
+      setUserAvatar(u.profileImage + '?a=' + new Date())
       navigate('/account')
     }
   };

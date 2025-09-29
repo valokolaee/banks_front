@@ -11,6 +11,7 @@ const Sidebar = () => {
     { path: "/wallet", label: "Wallet", icon: "/images/icons_user/wallet.svg" },
     { path: "/pools", label: "Pools", icon: "/images/icons_user/pools.svg" },
     { path: "/banks", label: "Banks", icon: "/images/icons_user/banks.svg" },
+    // { path: "/monitoring", label: "Monitoring", icon: "/images/icons_user/banks.svg" },
   ];
 
   return (
