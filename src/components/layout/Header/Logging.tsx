@@ -20,6 +20,9 @@ const Logging: React.FC = () => {
     const _profile = () => {
         navigate('/profile')
     }
+    const _register = () => {
+        navigate('/register')
+    }
 
 
     const _logOut = () => {
@@ -40,14 +43,7 @@ const Logging: React.FC = () => {
             onClick: _logOut,
         extra: '⌘S',
     }
-
-    const _userName =  _user.token ? {
-        key: '1',
-        label: 'login',
-        icon: <UserOutlined />,
-         extra: '⌘S',
-    } : undefined
-
+ 
 
     
     const items: MenuProps['items'] = [
@@ -66,6 +62,13 @@ const Logging: React.FC = () => {
         //     onClick:_profile
         
         // },
+        {
+            key: '3',
+            label: 'Register',
+            extra: '⌘P',
+            onClick: _register
+        
+        },
         _log
 
     ];

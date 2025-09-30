@@ -28,11 +28,12 @@ const Login = () => {
     remember?: boolean;
 
   };
-  console.log('user', _savedUser);
+  // console.log('user', _savedUser);
 
   const onFinish: FormProps<FieldType>['onFinish'] = async (values) => {
     const v = { ...values, remember: undefined }
     const x = await refWebService?.current?.callApi<ILoginRes>(apis.auth.login(v))
+    console.log('xxx', x);
 
     if (x?.success) {
       var u: IUser = x.data as IUser;
@@ -40,7 +41,6 @@ const Login = () => {
       if (values.remember) {
         u.pass = values.password
       }
-      console.log('xxx', u);
 
 
       setUser(u)

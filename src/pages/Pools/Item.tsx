@@ -47,12 +47,12 @@ const PoolsItem: React.FC<{ pool: IPool; index: number; expandedPoolId: number; 
       {/* Compact Card View */}
       <div
         className="pool-compact group-hover:bg-dark-gray/50 transition-colors duration-200 cursor-pointer"
-
         tabIndex={0}
         role="button"
         aria-label={`Toggle ${pool.name} details`}
         aria-expanded={expandedPoolId === pool.id}
       >
+
         <SmartImage
           src={pool.logo || ''}
           alt={pool.name}

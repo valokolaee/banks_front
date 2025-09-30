@@ -33,7 +33,7 @@ const Banks: React.FC = () => {
 
   const _loadPools = async () => {
 
-    const x2 = await refWebService.current?.callApi<IResponse<IBank[]>>(apis.pools.getAll())
+    const x2 = await refWebService.current?.callApi<IResponse<IBank[]>>(apis.banks.getAll())
     if (x2?.success) {
       set_banks(x2.data!)
     }

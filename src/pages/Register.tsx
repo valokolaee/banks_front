@@ -1,28 +1,20 @@
-import React, { useRef } from 'react';
 import {
   Form,
   FormProps,
   Input,
+  notification,
   Select
 } from 'antd';
-import CText from '../components/ui/CText';
-import CLink from '../components/ui/CLink';
-import WebService, { IWebServiceFuncs } from '../webService';
+import React, { useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import IRegisterReq, { IRegisterRes } from '../webService/ApiUrls/apis/IRegister';
-import apis from '../webService/ApiUrls/apis';
 import CButton from '../components/ui/CButton';
-import { setUser } from '../redux/actions';
+import CLink from '../components/ui/CLink';
+import CText from '../components/ui/CText';
 import IUser from '../intrfaceces/IUser';
-import { NotificationPlacement } from 'antd/es/notification/interface';
-import {
-  RadiusBottomleftOutlined,
-  RadiusBottomrightOutlined,
-  RadiusUpleftOutlined,
-  RadiusUprightOutlined,
-} from '@ant-design/icons';
-import { Button, Divider, notification, Space } from 'antd';
-import type { NotificationArgsProps } from 'antd';
+import { setUser, setUserAvatar } from '../redux/actions';
+import WebService, { IWebServiceFuncs } from '../webService';
+import apis from '../webService/ApiUrls/apis';
+import IRegisterReq, { IRegisterRes } from '../webService/ApiUrls/apis/IRegister';
 
 
 const FormDisabledDemo: React.FC = () => {
@@ -46,6 +38,7 @@ const FormDisabledDemo: React.FC = () => {
 
     if (x?.success) {
       setUser(x.data as IUser)
+      setUserAvatar('')
       navigate('/account')
     } else {
       openNotification(x?.message || 'Registration failed') }

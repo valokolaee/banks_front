@@ -25,7 +25,10 @@ export default React.forwardRef(({ className, size = 30, donTShowSpin, }: IWebSe
   // const [_prog, set_prog] = useState<BarPropTypes>({})
 
   config = {
-    headers: { Authorization: `Bearer ${token}` },
+    headers: {
+      Authorization: `Bearer ${token}`,
+      // "Content-Type": "multipart/form-data"
+    },
 
     beforeRedirect(options, responseDetails) {
 

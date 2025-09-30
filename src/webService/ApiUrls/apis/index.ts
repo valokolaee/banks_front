@@ -22,6 +22,7 @@ export default {
     referrals: mdlr({ axiosType: 'get', apiUrl: 'referrals', folderUrl: 'users', }),
     loans: mdlr({ axiosType: 'get', apiUrl: 'loans', folderUrl: 'users', }),
     profile(body: IUser) { return mdlr({ axiosType: 'put', apiUrl: 'profile', folderUrl: this.folderUrl, body }) },
+    updateAvatar(body: any) { return mdlr({ axiosType: 'put', apiUrl: 'avatar', folderUrl: this.folderUrl, body }) },
   },
 
   pools: {

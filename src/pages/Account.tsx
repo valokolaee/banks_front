@@ -19,12 +19,15 @@ import apis from "../webService/ApiUrls/apis";
 import IResponse from "../webService/ApiUrls/apis/IResponse";
 import { csvUrler } from "../webService/ApiUrls/apiUrlService/baseUrl";
 import { Image } from "antd";
+import { setUser, setUserAvatar } from "../redux/actions";
+import { useNavigate } from "react-router-dom";
 
 /**
  * Comprehensive account dashboard with user profile, stats, and financial data
  */
 const Account: React.FC = () => {
   const refWebService = useRef<IWebServiceFuncs>()
+  const navigate = useNavigate();
   const _user = useAppSelector((s) => s.userSlice)
 
 
@@ -75,9 +78,17 @@ const Account: React.FC = () => {
     })
     const getMe = await refWebService?.current?.callApi<IResponse<IUser>>(apis.auth.getMe)
 
-    // if (getMe?.success) {
-    //   setUser( getMe?.data! )
-    // }
+    if (getMe?.success) {
+      setUser({ ..._user, ...getMe?.data! })
+      setUserAvatar(_user.profileImage!)
+    } else {
+      // setUser( undefined)
+      // TODO checke if not logged in and what to do
+      // better show a ui to lead user into login page
+      setUserAvatar('')
+      // navigate('/login')
+
+    }
 
     console.log('getMe', getMe);
 
@@ -104,7 +115,6 @@ const Account: React.FC = () => {
 
   return (
     <div className="relative min-h-screen">
-
       <div className="relative z-10 px-6 py-20 max-w-7xl mx-auto">
         {/* Header */}
         <div data-aos="fade-up" className="text-center mb-12">
@@ -135,9 +145,7 @@ const Account: React.FC = () => {
                   style={{ borderRadius: '10px' }}
                 />
                 */}
-                <div
-                  className='absolute bottom-3 right-3 opacity-25 hover:opacity-75'
-                >
+                <div className='absolute bottom-3 right-3 opacity-25 hover:opacity-75'>
 
                   <ImageUploader numberOfItems={1} />
                 </div>
@@ -154,9 +162,11 @@ const Account: React.FC = () => {
 
             <div className="profile-meta mt-4">
               <p className="text-sm text-gray-400">
+
                 <strong>Member Since:</strong> {_user?.createdAt ? new Date(_user.createdAt).toLocaleDateString() : 'N/A'}
               </p>
               <p className="text-sm text-gray-400">
+                {/* TODO Last Login should be checked on backend */}
                 <strong>Last Login:</strong> {new Date().toLocaleDateString()}
               </p>
               <p className="text-sm text-gold">

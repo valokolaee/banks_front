@@ -5,8 +5,8 @@ import "../../styles/pools.css";
 import WebService, { IWebServiceFuncs } from "../../webService";
 import apis from "../../webService/ApiUrls/apis";
 import IResponse from "../../webService/ApiUrls/apis/IResponse";
-import PoolsItem from "./item";
-
+import PoolsItem from "./Item";
+ 
 
 
 const Pools: React.FC = () => {
@@ -28,6 +28,8 @@ const Pools: React.FC = () => {
     const x2 = await refWebService.current?.callApi<IResponse<IPool[]>>(apis.pools.getAll())
     if (x2?.success) {
       set_pools(x2.data!)
+      console.log('pool', x2.data);
+
     }
 
   }
