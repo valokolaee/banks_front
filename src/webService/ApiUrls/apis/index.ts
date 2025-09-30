@@ -1,4 +1,5 @@
 import IUser from '../../../intrfaceces/IUser';
+import { IPool } from '../../../intrfaceces/types';
 import { ModelApi } from '../ModelApi';
 import ILoginReq from './ILogin';
 import IRegisterReq from './IRegister';
@@ -28,7 +29,9 @@ export default {
   pools: {
     folderUrl: 'pools',
     services(poolId: number) { return mdlr({ axiosType: 'get', apiUrl: poolId, apiUrl2: 'services', folderUrl: this.folderUrl, }) },
-    getAll (){return mdlr({ axiosType: 'get', folderUrl: 'pools', })}
+    getAll() { return mdlr({ axiosType: 'get', folderUrl: 'pools', }) },
+    update(body:Partial <IPool>) { return mdlr({ axiosType: 'put', folderUrl: 'pools',body }) }
+    
   },
 
   banks: {

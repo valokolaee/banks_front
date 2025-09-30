@@ -26,6 +26,10 @@ const PoolsItem: React.FC<{ pool: IPool; index: number; expandedPoolId: number; 
   }
 
   const _load = async () => {
+               // https://localhost:3002/uploads/pool/avatar_12.png
+    // const u = `https://localhost:3002/uploads/pool/1.svg`
+    // const x1 = await refWebService.current?.callApi<IResponse<IPool[]>>(apis.pools.update({ id: pool.id, logo: u }))
+    // console.log('x1', x1);
 
     const x2 = await refWebService.current?.callApi<IResponse<IPool[]>>(apis.pools.getAll())
     if (x2?.success) {
@@ -35,6 +39,8 @@ const PoolsItem: React.FC<{ pool: IPool; index: number; expandedPoolId: number; 
 
   }
 
+  console.log(pool);
+  
   return (
     <div
       key={pool.id}
