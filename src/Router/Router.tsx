@@ -4,14 +4,14 @@ import { Route, Routes } from "react-router-dom";
 // Pages
 import RealtimeChart from "../pages/monitoring/components/realTime/RealtimeChart";
 import Account from "../pages/Account";
-import Banks from "../pages/Banks";
+import Banks from "../pages/Banks/Banks";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Pools from "../pages/Pools/Pools";
 import Register from "../pages/Register";
 import Wallet from "../pages/Wallet";
 import Monitoring from "../pages/monitoring/Monitoring";
-import Profile from "../pages/Profile";
+import Profile from "../pages/Profile/Profile";
 
 
 export default () =>

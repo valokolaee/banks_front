@@ -26,9 +26,12 @@ const userSlice = createSlice({
       state.token = action.payload.token;
       state.clientType = action.payload.clientType;
       state.id = action.payload.id;
-      state.logoUrl = action.payload.logoUrl;
       state.createdAt = action.payload.createdAt;
       state.pass = action.payload.pass;
+    },
+    SET_USER_LOGO: (state, action: PayloadAction<string>) => { 
+      state.logoUrl = action.payload;
+
     },
     SET_USER_AVATAR: (state, action: PayloadAction<string>) => {
       
@@ -37,6 +40,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { SET_USER ,SET_USER_AVATAR} = userSlice.actions;
+export const { SET_USER ,SET_USER_AVATAR,SET_USER_LOGO} = userSlice.actions;
 const userReducer = userSlice.reducer;
 export default userReducer;

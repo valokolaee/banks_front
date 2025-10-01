@@ -35,11 +35,11 @@ const PoolsItem: React.FC<{ pool: IPool; index: number; expandedPoolId: number; 
     if (x2?.success) {
       set_pools(x2.data!)
     }
-    console.log(x2);
+    // console.log(x2);
 
   }
 
-  console.log(pool);
+  // console.log(pool);
   
   return (
     <div

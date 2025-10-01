@@ -1,7 +1,7 @@
 // src/pages/Account.tsx
 import React, { useEffect, useRef, useState } from "react";
 import CAvatar from "../components/ui/CAvatar";
-import ImageUploader from "../components/ui/ImageUploader";
+import ImageUploader from "../components/ui/CUploader";
 import {
   IBankAffiliation,
   IInvestment,
@@ -77,6 +77,7 @@ const Account: React.FC = () => {
       active_referrals: csvSampleData[0].profit4,
     })
     const getMe = await refWebService?.current?.callApi<IResponse<IUser>>(apis.auth.getMe)
+    // const mail = await refWebService?.current?.callApi<IResponse<IUser>>(apis.auth.mail)
 
     if (getMe?.success) {
       setUser({ ..._user, ...getMe?.data! })
@@ -145,10 +146,10 @@ const Account: React.FC = () => {
                   style={{ borderRadius: '10px' }}
                 />
                 */}
-                <div className='absolute bottom-3 right-3 opacity-25 hover:opacity-75'>
+                {/* <div className='absolute bottom-3 right-3 opacity-25 hover:opacity-75'>
 
                   <ImageUploader numberOfItems={1} />
-                </div>
+                </div> */}
 
               </div>
 
@@ -165,12 +166,10 @@ const Account: React.FC = () => {
 
                 <strong>Member Since:</strong> {_user?.createdAt ? new Date(_user.createdAt).toLocaleDateString() : 'N/A'}
               </p>
-              <p className="text-sm text-gray-400">
-                {/* TODO Last Login should be checked on backend */}
-                <strong>Last Login:</strong> {new Date().toLocaleDateString()}
-              </p>
+
+              {/* TODO  Rank */}
               <p className="text-sm text-gold">
-                <strong>Rank:</strong> Gold Member
+                <strong>Rank:</strong>{_user.rankId}
               </p>
             </div>
           </div>

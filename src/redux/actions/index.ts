@@ -1,6 +1,6 @@
   
 import IUser from '../../intrfaceces/IUser';
-import { SET_USER, SET_USER_AVATAR } from '../slice/userSlice';
+import { SET_USER, SET_USER_AVATAR, SET_USER_LOGO } from '../slice/userSlice';
 import { appDispatch } from '../store';
 
 
@@ -14,6 +14,9 @@ export const setUser = (data: IUser|undefined) => {
 
 export const setUserAvatar = (data: string) => {
     appDispatch(SET_USER_AVATAR(data ));
+};
+export const setUserLogo = (data: string) => {
+    appDispatch(SET_USER_LOGO(data ));
 };
 
 // export const setLanguage = (data: ILang | undefined) => { appDispatch(SET_LANGUAGE(data!)); };

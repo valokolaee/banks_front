@@ -2,7 +2,7 @@ import React from 'react';
 import { LoginOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
- import { useAppSelector } from '../../../redux/hooks';
+import { useAppSelector } from '../../../redux/hooks';
 import { setUser, setUserAvatar } from '../../../redux/actions';
 import { logout } from '../../../features/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
@@ -34,40 +34,41 @@ const Logging: React.FC = () => {
         key: '4',
         label: 'login',
         icon: <LoginOutlined />,
-        onClick:  _login,
+        onClick: _login,
         extra: '⌘S',
     } : {
         key: '4',
         label: 'logout',
         icon: <LogoutOutlined />,
-            onClick: _logOut,
+        onClick: _logOut,
         extra: '⌘S',
     }
- 
 
-    
+
+
     const items: MenuProps['items'] = [
         {
             key: '1',
-            label: _user.username||'',
+            label: _user.username || '',
+            onClick: _profile,
             icon: <UserOutlined />,
         },
         {
             type: 'divider',
         },
-        // {
-        //     key: '2',
-        //     label: 'Profile',
-        //     extra: '⌘P',
-        //     onClick:_profile
-        
-        // },
+        {
+            key: '2',
+            label: 'Profile',
+            // extra: '⌘P',
+            onClick: _profile
+
+        },
         {
             key: '3',
             label: 'Register',
-            extra: '⌘P',
+            // extra: '⌘P',
             onClick: _register
-        
+
         },
         _log
 
@@ -76,7 +77,7 @@ const Logging: React.FC = () => {
         <Dropdown menu={{ items }}>
             {/* <a onClick={(e) => e.preventDefault()}> */}
             <Space>
-                <CAvatar url={_user.profileImage!}/>
+                <CAvatar url={_user.profileImage!} />
             </Space>
             {/* </a> */}
         </Dropdown>

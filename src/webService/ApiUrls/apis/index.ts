@@ -1,5 +1,5 @@
 import IUser from '../../../intrfaceces/IUser';
-import { IPool } from '../../../intrfaceces/types';
+import { IBank, IPool } from '../../../intrfaceces/types';
 import { ModelApi } from '../ModelApi';
 import ILoginReq from './ILogin';
 import IRegisterReq from './IRegister';
@@ -12,6 +12,7 @@ export default {
     // registerUser(body: IRegisterReq) { return mdlr({ axiosType: 'post', apiUrl: 'registerUser', folderUrl: 'auth', body }) },
     register(body: IRegisterReq) { return mdlr({ axiosType: 'post', apiUrl: 'register', folderUrl: 'auth', body }) },
     getMe: mdlr({ axiosType: 'get', apiUrl: 'me', folderUrl: 'auth', }),
+    mail: mdlr({ axiosType: 'get', apiUrl: 'mail', folderUrl: 'auth', }),
   },
 
   users: {
@@ -23,7 +24,8 @@ export default {
     referrals: mdlr({ axiosType: 'get', apiUrl: 'referrals', folderUrl: 'users', }),
     loans: mdlr({ axiosType: 'get', apiUrl: 'loans', folderUrl: 'users', }),
     profile(body: IUser) { return mdlr({ axiosType: 'put', apiUrl: 'profile', folderUrl: this.folderUrl, body }) },
-    updateAvatar(body: any) { return mdlr({ axiosType: 'put', apiUrl: 'avatar', folderUrl: this.folderUrl, body }) },
+    updateAvatar(body: any) { return mdlr({ axiosType: 'put', apiUrl: 'avatar', folderUrl: 'users', body }) },
+    updateLogo(body: any) { return mdlr({ axiosType: 'put', apiUrl: 'logo', folderUrl: 'users', body }) },
   },
 
   pools: {
@@ -38,6 +40,8 @@ export default {
     folderUrl: 'banks',
     getAll() { return mdlr({ axiosType: 'get', folderUrl: this.folderUrl }) },
     services(bankId: number) { return mdlr({ axiosType: 'get', apiUrl: bankId, apiUrl2: 'services', folderUrl: this.folderUrl, }) },
+    update(body: Partial<IBank>) { return mdlr({ axiosType: 'put', folderUrl: this.folderUrl, body }) }
+
   }
 
 

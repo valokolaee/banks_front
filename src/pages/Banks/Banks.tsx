@@ -1,13 +1,14 @@
 // src/pages/Banks.tsx
 import React, { useState, useCallback, useEffect, useRef } from "react";
-import { useGetBanksQuery, useGetBankServicesQuery } from "../features/api/banksEndpoint";
+import { useGetBanksQuery, useGetBankServicesQuery } from "../../features/api/banksEndpoint";
 // import Background from "../components/ui/Background";
-import SmartImage from "../components/ui/SmartImage";
-import "../styles/banks.css";
-import { IBank, IService } from "../intrfaceces/types";
-import WebService, { IWebServiceFuncs } from "../webService";
-import IResponse from "../webService/ApiUrls/apis/IResponse";
-import apis from "../webService/ApiUrls/apis";
+import SmartImage from "../../components/ui/SmartImage";
+import "../../styles/banks.css";
+import { IBank, IService } from "../../intrfaceces/types";
+import WebService, { IWebServiceFuncs } from "../../webService";
+import IResponse from "../../webService/ApiUrls/apis/IResponse";
+import apis from "../../webService/ApiUrls/apis";
+import BanksItem from "./BanksItem";
 
 type Timeout = ReturnType<typeof setTimeout>;
 
@@ -16,26 +17,24 @@ type Timeout = ReturnType<typeof setTimeout>;
  * Each bank shows only its own services, and only one bank can be expanded at a time
  */
 const Banks: React.FC = () => {
-    const refWebService = useRef<IWebServiceFuncs>()
+  const refWebService = useRef<IWebServiceFuncs>()
   const [banks, set_banks] = useState<IBank[]>();
   const [services, set_services] = useState<IService[]>([])
   const [expandedBankId, setExpandedBankId] = useState<number | null>(null);
-  
+
 
   useEffect(() => {
     _loadPools()
   }, [])
-  // useEffect(() => {
-  //   _loadServices()
-  // }, [expandedBankId])
-
-
+ 
 
   const _loadPools = async () => {
 
     const x2 = await refWebService.current?.callApi<IResponse<IBank[]>>(apis.banks.getAll())
     if (x2?.success) {
       set_banks(x2.data!)
+      console.log(x2);
+
     }
 
   }
@@ -61,7 +60,22 @@ const Banks: React.FC = () => {
    * Toggle bank expansion with proper single-expand behavior
    * Only one bank can be expanded at a time
    */
+
+
+
+  const _u = async (bankId: number) => {
+console.log('_u',bankId);
+    const logo =`https://localhost:3002/uploads/bank/${bankId}.svg`
+    const x2 = await refWebService.current?.callApi<IResponse<IBank>>(apis.banks.update({id:bankId,logo}))
+    if (x2?.success) {
+       console.log(x2);
+
+    }
+  }
+
   const toggleBankServices = useCallback((bankId: number) => {
+//     console.log(bankId);
+// _u(bankId)
     const now = Date.now();
     const timeSinceLastClick = now - lastClickedRef.current;
 
@@ -139,7 +153,13 @@ const Banks: React.FC = () => {
 
         {/* Banks Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+          {/*        
+           TODO turn into a component should be completed
+            <BanksItem {...bank}  /> */}
+
           {banks?.map((bank, index) => (
+
             <div
               key={bank.id}
               data-aos="fade-up"
@@ -257,7 +277,7 @@ const Banks: React.FC = () => {
           </div>
         )}
       </div>
-          <WebService ref={refWebService} />
+      <WebService ref={refWebService} />
     </div>
   );
 };
