@@ -11,6 +11,7 @@ const Box: React.FC<IBox> = ({ flex, children, vertical, card }) => {
 
     return (
         <Flex
+            wrap='wrap'
             vertical={vertical}
             style={{ ...cardStyle }}
             flex={flex}
@@ -37,6 +38,6 @@ const style: React.CSSProperties = {
     borderRadius: 5,
     marginBottom: 3,
     marginRight: 3,
-...tstStyle
-    // backgroundColor: '#ccc',
+...tstStyle,
+    backgroundColor: '#ccc',
 }

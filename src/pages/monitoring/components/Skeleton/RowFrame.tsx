@@ -1,17 +1,22 @@
 import { Flex } from 'antd';
 import React, { ReactElement } from 'react';
+import useIsMobile from '../../../../hooks/useIsMobile';
 
 
 
-const RowFrame: React.FC<IRowFrame> = ({ children1, children2 }) => (
-    <Flex style={style}>
+const RowFrame: React.FC<IRowFrame> = ({ children1, children2 }) => {
+    const _isMobile = useIsMobile()
+    // console.log(_width);
+    
+    return (
+    <Flex style={style} vertical={_isMobile}>
 
-        <Flex style={style} flex={2}> {children1} </Flex>
-        <Flex style={style} flex={1}>{children2}</Flex>
+        <Flex style={style} flex={2} vertical={_isMobile}> {children1} </Flex>
+        <Flex style={style} flex={1} vertical={_isMobile}>{children2}</Flex>
 
     </Flex>
 );
-
+}
 export default RowFrame;
 
 
