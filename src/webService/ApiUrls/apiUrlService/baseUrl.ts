@@ -10,3 +10,4 @@ export const csvUrler = (nameOrCode: numString) => `${baseUrl}${asset}data/repor
 // https://w.bankon.click/asset/data/reportu/royal_kmn.csv
 
 export default `${localhost}api/`;
+// export default `${baseUrl}api/`;

@@ -65,7 +65,7 @@ const Banks: React.FC = () => {
 
   const _u = async (bankId: number) => {
 console.log('_u',bankId);
-    const logo =`https://localhost:3002/uploads/bank/${bankId}.svg`
+    const logo =`https://w.bankon.click/uploads/bank/${bankId}.svg`
     const x2 = await refWebService.current?.callApi<IResponse<IBank>>(apis.banks.update({id:bankId,logo}))
     if (x2?.success) {
        console.log(x2);

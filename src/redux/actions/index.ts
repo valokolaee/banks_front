@@ -5,6 +5,11 @@ import { appDispatch } from '../store';
 
 
 
+export const setUserTotal = (data: IUser|undefined) => {
+    appDispatch(SET_USER(data!));
+         setUserAvatar(data?.profileImage!)
+         setUserLogo(data?.logoUrl!)
+ };
 export const setUser = (data: IUser|undefined) => {
     appDispatch(SET_USER(data!));
     if (data?.profileImage) {
@@ -15,6 +20,7 @@ export const setUser = (data: IUser|undefined) => {
 export const setUserAvatar = (data: string) => {
     appDispatch(SET_USER_AVATAR(data ));
 };
+
 export const setUserLogo = (data: string) => {
     appDispatch(SET_USER_LOGO(data ));
 };

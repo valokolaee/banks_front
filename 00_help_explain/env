@@ -1,0 +1,4 @@
+VITE_BASE_URL = https://w.bankon.click/
+VITE_LOCAL_HOST = https://localhost:3002/
+VITE_API = api/
+VITE_ASSET = asset/

@@ -3,7 +3,7 @@ import { LoginOutlined, LogoutOutlined, UserOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
 import { Dropdown, Space } from 'antd';
 import { useAppSelector } from '../../../redux/hooks';
-import { setUser, setUserAvatar } from '../../../redux/actions';
+import { setUser, setUserAvatar, setUserTotal } from '../../../redux/actions';
 import { logout } from '../../../features/auth/authSlice';
 import { useNavigate } from 'react-router-dom';
 import CAvatar from '../../ui/CAvatar';
@@ -26,8 +26,8 @@ const Logging: React.FC = () => {
 
 
     const _logOut = () => {
-        setUser({})
-        setUserAvatar('')
+        setUserTotal({})
+        // setUserAvatar('')
     }
 
     const _log = !!!_user.token ? {

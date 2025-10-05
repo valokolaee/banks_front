@@ -8,6 +8,8 @@ import result from './result';
 import { LoadingOutlined } from '@ant-design/icons';
 import { Flex, Spin } from 'antd';
 import { useAppSelector } from '../redux/hooks';
+import { useNavigate } from 'react-router-dom';
+import { setUser, setUserTotal } from '../redux/actions';
 const isDemo = true;
 
 export var config: AxiosRequestConfig = {
@@ -20,6 +22,7 @@ export var config: AxiosRequestConfig = {
 export default React.forwardRef(({ className, size = 30, donTShowSpin, }: IWebService, ref) => {
   useImperativeHandle(ref, () => { return { callApi }; });
   const token = useAppSelector((s) => s.userSlice.token)
+  const navigate = useNavigate();
 
   const [showModal, setShowModal] = useState<ModelApi | undefined>(undefined);
   // const [_prog, set_prog] = useState<BarPropTypes>({})
@@ -62,7 +65,15 @@ export default React.forwardRef(({ className, size = 30, donTShowSpin, }: IWebSe
     } else {
       // console.log(apiModel.apiUrl,result(res));
     }
-    return result(res);
+
+    const _res = result(res);
+    if (_res === 401) {
+      // setUserTotal({})
+      // navigate('/login')
+    } else {
+
+      return result(res);
+    }
 
   }
 
@@ -94,7 +105,6 @@ export interface IWebService {
 }
 
 
- 
+
 
 type TPosition = "center" | "pageFlew"
- 

@@ -27,7 +27,7 @@ const PoolsItem: React.FC<{ pool: IPool; index: number; expandedPoolId: number; 
 
   const _load = async () => {
                // https://localhost:3002/uploads/pool/avatar_12.png
-    // const u = `https://localhost:3002/uploads/pool/1.svg`
+    // const u = `https://w.bankon.click/uploads/pool/${pool.id}.svg`
     // const x1 = await refWebService.current?.callApi<IResponse<IPool[]>>(apis.pools.update({ id: pool.id, logo: u }))
     // console.log('x1', x1);
 
