@@ -21,7 +21,7 @@ export default RowFrame;
 
 
 const style: React.CSSProperties = {
-    height:230
+    minHeight:230
     // ...tstStyleBlue,
     // borderWidth: 1,
     // borderStyle: 'solid',

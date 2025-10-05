@@ -14,7 +14,8 @@ const Row3: React.FC = () => (
 
         children2={[
             <Box flex={1} vertical>
-                <Box flex={2} card>box 1-1-2</Box>
+                <Box flex={2} card>
+                    box 1-1-2</Box>
                 <Box flex={2} card>box 1-1-2</Box>
             </Box>,
             <Box flex={1} vertical>

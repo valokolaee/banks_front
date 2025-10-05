@@ -9,7 +9,7 @@ import { numString } from 'mrv-utils';
 const Box: React.FC<IContentBox> = ({  title,value}) => (
     <Flex
         style={{
-            height: 230,
+            minHeight: 230,
             borderRadius: 5,
             margin: 3,
             ...tstStyleBlue

@@ -10,7 +10,9 @@ const Row1: React.FC = () => (
 
     <RowFrame
         children1={[
-            <Box flex={2} card>box 1-1-1</Box>,
+            <Box flex={2} card>
+                
+                box 1-1-1</Box>,
             <Box flex={2} card>box 1-1-2</Box>,
             <Box flex={1} vertical>
                 <Box flex={2} card>box 1-1-2</Box>
