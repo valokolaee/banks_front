@@ -8,7 +8,7 @@ import Row3 from './Row3';
 
 
 
-const App: React.FC = () => (
+const Skeleton: React.FC = () => (
     <Flex style={{}} vertical  >
         <Row1 />
         <Row2 />
@@ -16,5 +16,5 @@ const App: React.FC = () => (
     </Flex>
 );
 
-export default App;
+export default Skeleton;
 

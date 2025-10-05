@@ -9,5 +9,5 @@ const asset = ASSET//'asset/'
 export const csvUrler = (nameOrCode: numString) => `${baseUrl}${asset}data/report/${nameOrCode}.csv`
 // https://w.bankon.click/asset/data/reportu/royal_kmn.csv
 
-export default `${localhost}api/`;
+export default `${process.env.NODE_ENV === 'development'?localhost:baseUrl}${api}`;
 // export default `${baseUrl}api/`;
