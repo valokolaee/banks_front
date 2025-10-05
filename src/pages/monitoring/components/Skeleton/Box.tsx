@@ -39,5 +39,5 @@ const style: React.CSSProperties = {
     marginBottom: 3,
     marginRight: 3,
 ...tstStyle,
-    backgroundColor: '#ccc',
+    // backgroundColor: '#ccc',
 }
