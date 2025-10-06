@@ -10,6 +10,7 @@ import { Provider } from "react-redux";
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import store from "./redux/store";
+import Skeleton from "./pages/monitoring/components/Skeleton/Skeleton";
 
 let persistor = persistStore(store);
 
@@ -21,7 +22,9 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <BrowserRouter>
-          <App />
+          <Skeleton/>
+          {/* <Skeleton/> */}
+          {/* <App /> */}
         </BrowserRouter>
       </PersistGate>
     </Provider>

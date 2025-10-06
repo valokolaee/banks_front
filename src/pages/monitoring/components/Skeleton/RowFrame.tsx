@@ -4,15 +4,15 @@ import useIsMobile from '../../../../hooks/useIsMobile';
 
 
 
-const RowFrame: React.FC<IRowFrame> = ({ children1, children2 }) => {
+const RowFrame: React.FC<IRowFrame> = ({ children1, children2, flex, children1flex = 2, children2flex = 1,        minHeight}) => {
     const _isMobile = useIsMobile()
     // console.log(_width);
     
     return (
-    <Flex style={style} vertical={_isMobile}>
+    <Flex style={{minHeight}} vertical={_isMobile} flex={flex}>
 
-        <Flex style={style} flex={2} vertical={_isMobile}> {children1} </Flex>
-        <Flex style={style} flex={1} vertical={_isMobile}>{children2}</Flex>
+        <Flex style={style} flex={children1flex} vertical={_isMobile}> {children1} </Flex>
+        <Flex style={style} flex={children2flex} vertical={_isMobile}>{children2}</Flex>
 
     </Flex>
 );
@@ -21,7 +21,7 @@ export default RowFrame;
 
 
 const style: React.CSSProperties = {
-    minHeight:230
+    // minHeight:250
     // ...tstStyleBlue,
     // borderWidth: 1,
     // borderStyle: 'solid',
@@ -36,6 +36,11 @@ const style: React.CSSProperties = {
 
 
 export interface IRowFrame {
-    children1?: ReactElement[] | ReactElement
-    children2?: ReactElement[] | ReactElement
+    children1?: ReactElement[] | ReactElement;
+    children2?: ReactElement[] | ReactElement;
+    children1flex?: number;
+    children2flex?: number;
+    flex?: number;
+    minHeight?: number
+
 }

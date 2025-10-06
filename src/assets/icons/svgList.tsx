@@ -1,8 +1,9 @@
 
-import   Logo from "./user-login-3057.svg";
+import chart1 from "./chart1.png";
+import chart6 from "./chart6.png";
+import Logo from "./user-login-3057.svg";
 
-// import { ReactComponent as UserLogin } from './user-login-3057.svg';
-// import { ReactComponent as Logo } from './svg/logo.svg';
-//  import SomeImage from './images/background.png';
 
-export default{ Logo }
+
+
+export default { Logo, chart1, chart6 }

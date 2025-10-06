@@ -15,7 +15,7 @@ const Sidebar = () => {
   ];
 
   return (
-    <aside className="w-60 bg-dark-gray border-r border-dark fixed left-0 top-16 bottom-0 z-40 hidden md:block">
+    <aside className="w-60 bg-dark-gray border-r border-dark fixed left-0 top-16 bottom-0   z-40 hidden md:block">
       <nav className="p-4 space-y-3">
         {menuItems.map((item) => (
           <Link
